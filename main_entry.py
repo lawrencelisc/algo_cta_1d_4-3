@@ -18,7 +18,7 @@ from core.execution import SignalExecution
 
 
 def gn_10m_status():
-    dt_until = datetime.now(timezone.ut
+    dt_until = datetime.now(timezone.ut)
     unix_until = int(dt_until.timestamp())
     unix_since = unix_until - (60 * 60)
 
