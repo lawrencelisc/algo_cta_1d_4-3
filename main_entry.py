@@ -134,7 +134,7 @@ def scheduler(bet_size):
 
 if __name__ == '__main__':
     BET_SIZE = {'BTC': 0.002, 'ETH': 0.02, 'SOL': 0.2, 'SUI': 10, 'DOGE': 100}
-    each_time: str = '09:50'
+    each_time: str = '09:50' # ---> modify 09:50 utc
 
     logger.info('Starting unified scheduler + algo program')
 
