@@ -18,7 +18,7 @@ from core.execution import SignalExecution
 
 
 def gn_10m_status():
-    dt_until = datetime.now(timezone.ut)
+    dt_until = datetime.now(timezone.utc)
     unix_until = int(dt_until.timestamp())
     unix_since = unix_until - (60 * 60)
 
@@ -134,7 +134,7 @@ def scheduler(bet_size):
 
 if __name__ == '__main__':
     BET_SIZE = {'BTC': 0.002, 'ETH': 0.02, 'SOL': 0.2, 'SUI': 10, 'DOGE': 100}
-    each_time: str = '09:50' # ---> modify 09:50 utc
+    each_time: str = '10:15' # ---> modify 10:15 utc
 
     logger.info('Starting unified scheduler + algo program')
 
