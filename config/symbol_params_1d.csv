@@ -1,6 +1,6 @@
 symbol,leverage,tp_pct,sl_pct,trail_sl_pct,activation_pct
-BTC,2,10,4,1.5,8
+BTC,2,8,4,1.5,7
 ETH,2,7,4,1,5
-SOL,2,10,4,1.5,8
-SUI,2,10,4,1,8
-DOGE,2,10,4,1,8
+SOL,2,8,4,1.5,7
+SUI,2,8,4,1,7
+DOGE,2,8,4,1,7
