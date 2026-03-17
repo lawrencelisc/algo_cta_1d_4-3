@@ -102,8 +102,8 @@ class TelegramNotifier:
 
 
 class SignalExecution:
-    # constant
 
+    # initialization
     strat_folder = Path(__file__).parent.parent / 'data' / 'StratData'
     signal_folder = Path(__file__).parent.parent / 'data' / 'Signal'
 
@@ -123,7 +123,8 @@ class SignalExecution:
         self.signal_df = signal_df
         self.bet_size = bet_size
         self.tg_notifier = TelegramNotifier()  # 統一的 TG 管理器
-        return None
+        self.load_risk_para_dict()
+
 
     # get bybit api via ccxt
     def get_exchange_info(self, symbol: str):
@@ -384,8 +385,6 @@ class SignalExecution:
         _10m_traded = trade._10m_traded()
         print('10 min excess? ', _10m_traded)
 
-        risk_para_df = self.load_risk_para_dict()
-
         if True:
             for _, row in exec_list_df.iterrows():
                 symbol: str = row['symbol']
@@ -425,7 +424,7 @@ class SignalExecution:
                     if record_df is not None:
                         after_signal_df = result_signal_df[
                             (result_signal_df['symbol'] == symbol) &
-                            (result_signal_df['signal_plus'] == '01')
+                            (result_signal_df['signal_plus'] == '10')
                             ]
                         trade.trade_record_combine(after_signal_df, record_df)
                     else:
@@ -465,7 +464,7 @@ class SignalExecution:
                     if record_df is not None:
                         after_signal_df = result_signal_df[
                             (result_signal_df['symbol'] == symbol) &
-                            (result_signal_df['signal_plus'] == '01')
+                            (result_signal_df['signal_plus'] == '0-1')
                             ]
                         trade.trade_record_combine(after_signal_df, record_df)
                     else:
@@ -484,7 +483,7 @@ class SignalExecution:
                     if record_df is not None:
                         after_signal_df = result_signal_df[
                             (result_signal_df['symbol'] == symbol) &
-                            (result_signal_df['signal_plus'] == '01')
+                            (result_signal_df['signal_plus'] == '-10')
                             ]
                         trade.trade_record_combine(after_signal_df, record_df)
                     else:

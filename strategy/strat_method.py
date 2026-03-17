@@ -150,7 +150,19 @@ class CreateSignal:
         candle_len: int = int(row['candle_len'])
         rol: int = int(row['rol'])
         num_std: int = int(row['num_std'])
-        cycle: int = int(row['cycle'])
+
+        # 定義 5x ATR 狂暴系名單 (放寬至 50 bars)
+        wild_coins = ['DOGE', 'SUI']
+        # 定義 3x ATR 穩陣系名單 (收緊至 20 bars)
+        stable_coins = ['BTC', 'ETH', 'SOL']
+
+        if symbol in wild_coins:
+            dynamic_cycle = 50
+        elif symbol in stable_coins:
+            dynamic_cycle = 20
+        else:
+            # 如果唔喺名單上面，用返 CSV 設定檔個數做保底
+            dynamic_cycle = int(row['cycle'])
 
         strat_filename = str(row['name'] + '_' + row['res'] + '_' + row['symbol'] + '.csv')
         file_path = self.strat_folder / res / strat_filename
